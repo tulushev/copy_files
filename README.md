@@ -4,8 +4,8 @@ Give it a directory and some file extensions and it will copy all the file conte
 
 ## Prerequisites
 
-- macOS only right now
-- Zig language. You can install with `brew install zig`
+- macOS and Linux Wayland only right now
+- Zig language. You can install [here](https://ziglang.org/learn/getting-started/)
 
 ## Usage
 
