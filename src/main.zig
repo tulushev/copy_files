@@ -19,7 +19,7 @@ fn parse_arguments(allocator: std.mem.Allocator) !struct { allowed_patterns: [][
 
     if (args.len < 3) return error.ExpectedArgument;
 
-    const folder_path: [:0]u8 = try std.mem.Allocator.dupeZ(allocator, u8, args[1]);
+    const folder_path: [:0]u8 = try allocator.dupeZ(u8, args[1]);
 
     var allowed_patterns = try allocator.alloc([:0]u8, args.len - 2);
     for (args[2..], 0..) |pattern, i| {
