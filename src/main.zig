@@ -51,10 +51,7 @@ fn copy_files_in_dir(allocator: std.mem.Allocator, folder_path: [:0]u8, allowed_
                 const extension_pattern_matches = real_file_extension.len != 0 and std.mem.eql(u8, real_file_extension, extension_with_dot);
 
                 if (is_any_file_name_allowed or file_name_pattern_matches or extension_pattern_matches) {
-                    var file = try dir.openFile(entry.path, .{});
-                    defer file.close();
-
-                    const file_contents = try file.readToEndAlloc(allocator, 1024 * 1024 * 1024);
+                    const file_contents = try dir.readFileAlloc(allocator, entry.path, 1024 * 1024 * 1024);
 
                     const header = try std.fmt.allocPrint(allocator, "{s}\n```\n", .{entry.path});
                     try output_string.appendSlice(header);
