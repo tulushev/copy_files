@@ -23,7 +23,7 @@ fn parse_arguments(allocator: std.mem.Allocator) !struct { allowed_patterns: [][
 
     var allowed_patterns = try allocator.alloc([:0]u8, args.len - 2);
     for (args[2..], 0..) |pattern, i| {
-        allowed_patterns[i] = try std.mem.Allocator.dupeZ(allocator, u8, pattern);
+        allowed_patterns[i] = try allocator.dupeZ(u8, pattern);
     }
 
     return .{ .allowed_patterns = allowed_patterns, .folder_path = folder_path };
