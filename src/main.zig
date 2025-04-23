@@ -56,7 +56,7 @@ fn copy_files_in_dir(allocator: std.mem.Allocator, folder_path: [:0]u8, allowed_
                     const header = try std.fmt.allocPrint(allocator, "{s}\n```\n", .{entry.path});
                     try output_string.appendSlice(header);
                     try output_string.appendSlice(file_contents);
-                    try output_string.appendSlice("\n````\n\n");
+                    try output_string.appendSlice("\n```\n\n");
 
                     continue :file_loop;
                 }
